@@ -13,16 +13,13 @@ Unlike the simple pendulum, the double pendulum exhibits deterministic chaos, ma
 ## Implementation Details
 
 ### Numerical Integration
-To ensure data integrity and physical consistency, the project utilizes the **Runge-Kutta 45 (RK45)** method via `scipy.integrate.solve_ivp`. This approach is superior to simpler methods (like Euler) as it maintains energy conservation over longer simulation intervals, providing a reliable dataset for the neural network.
+To ensure data integrity and physical consistency, the project utilizes a **variational integrator**. This approach is superior to simpler methods (like Euler or RK45) as it maintains energy conservation over longer simulation intervals, providing a reliable dataset for the neural network.
 
 ### Data Preprocessing
-The raw output of the simulation (angular displacement and velocity) is preprocessed before being fed into the neural network:
-* Conversion from polar to Cartesian coordinates to avoid periodicity issues.
-* Normalization of state vectors.
-* Time-series windowing for sequential learning.
+TO DO
 
 ## Repository Structure
-* `simulation.py`: Contains the physical model and the RK45 integration logic.
+* `simulation.py`: Contains the physical model and integration logic.
 * `model.py`: Definition of the neural network architecture.
 * `train.py`: Script for training the model on generated datasets.
 * `visualize.py`: Tools for animating the pendulum and plotting loss metrics.
@@ -32,7 +29,7 @@ The raw output of the simulation (angular displacement and velocity) is preproce
 * NumPy
 * SciPy
 * Matplotlib
-* PyTorch or TensorFlow
+* PyTorch
 
 ## Usage
 1. Generate the dataset and visualize the chaotic trajectory:
